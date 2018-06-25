@@ -1,0 +1,41 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+import Nimble
+@testable import KubanKredit
+
+class {{ module_info.name }}PresenterTests: XCTestCase {
+
+    var presenter: {{ module_info.name }}PresenterImp!
+    var viewMock: {{ module_info.name }}ViewMock!
+
+    override func setUp() {
+        super.setUp()
+
+        viewMock = {{ module_info.name }}ViewMock()
+        presenter = {{ module_info.name }}PresenterImp(view: viewMock)
+    }
+
+    override func tearDown() {
+        presenter = nil
+        viewMock = nil
+
+        super.tearDown()
+    }
+
+    func testThatPresenterSetsUpViewWhenViewIsReady() {
+        // given
+        
+        // when
+        presenter.didTriggerViewReadyEvent()
+        
+        // then
+        expect(self.viewMock.setupInitialStateCallsCount) == 1
+    }
+}

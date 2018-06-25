@@ -1,0 +1,54 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+import Nimble
+@testable import KubanKredit
+
+class {{ module_info.name }}AssemblyTests: XCTestCase {
+
+	var moduleAssembly: {{ module_info.name }}ModuleAssembly!
+    var viewController: {{ module_info.name }}ViewController!
+    
+    override func setUp() {
+        moduleAssembly = {{ module_info.name }}ModuleAssembly.instance()
+        viewController = {{ module_info.name }}ViewController()
+        
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        moduleAssembly = nil
+        viewController = nil
+        
+        super.tearDown()
+    }
+
+    func testThatAssemblyInjectsPresenterIntoViewController() {
+        // given
+        
+        // when
+        moduleAssembly.inject(into: viewController)
+        
+        // then
+        expect(self.viewController.presenter).toNot(beNil())
+        expect(self.viewController.presenter).to(beAnInstanceOf(CaptchaConfirmationPresenterImp.self))
+    }
+    
+    func testThatAssemblyInjectsViewIntoPresenter() {
+        // given
+        
+        // when
+        moduleAssembly.inject(into: viewController)
+        
+        // then
+        let presenter = viewController.presenter as! {{ module_info.name }}PresenterImp
+        expect(presenter.view).toNot(beNil())
+        expect(presenter.view).to(beAnInstanceOf({{ module_info.name }}ViewController.self))
+    }
+}

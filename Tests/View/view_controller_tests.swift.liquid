@@ -1,0 +1,44 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+import UIKit
+import Nimble
+@testable import KubanKredit
+
+class {{ module_info.name }}ViewControllerTests: XCTestCase {
+
+	var viewController: {{ module_info.name }}ViewController!
+    var presenterMock: {{ module_info.name }}PresenterMock!
+
+    override func setUp() {
+        super.setUp()
+
+        presenterMock = {{ module_info.name }}PresenterMock()
+
+        viewController = StoryboardScene.{{ module_info.name }}.initialScene.instantiate()
+        viewController.presenter = presenterMock
+    }
+
+    override func tearDown() {
+    	viewController = nil
+    	presenterMock = nil
+
+        super.tearDown()
+    }
+
+    func testThatViewNotifiesPresenterWhenItIsReady() {
+        // given
+        
+        // when
+        viewController.viewDidLoad()
+        
+        // then
+        expect(self.presenterMock.didTriggerViewReadyEventCallsCount) == 1
+    }
+}
