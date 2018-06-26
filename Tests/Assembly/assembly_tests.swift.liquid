@@ -37,7 +37,7 @@ class {{ module_info.name }}AssemblyTests: XCTestCase {
         
         // then
         expect(self.viewController.presenter).toNot(beNil())
-        expect(self.viewController.presenter).to(beAnInstanceOf(CaptchaConfirmationPresenterImp.self))
+        expect(self.viewController.presenter).to(beAnInstanceOf({{ module_info.name }}PresenterImp.self))
     }
     
     func testThatAssemblyInjectsViewIntoPresenter() {
