@@ -18,6 +18,11 @@ final class {{ module_info.name }}ViewController: UIViewController {
         
         presenter.didTriggerViewReadyEvent()
     }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        {{ module_info.name }}ModuleAssembly.instance().inject(into: self)
+    }
 }
 
 // MARK: – {{module_info.name}}View
