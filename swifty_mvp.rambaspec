@@ -17,7 +17,7 @@ code_files:
 - {name: Presenter/PresenterImp.swift, path: Code/Presenter/presenter_imp.swift.liquid}
 
 # Assembly layer
-- {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
+- {name: Assembly/ModuleAssembly.swift, path: Code/Assembly/assembly.swift.liquid}
 
 # The declarations for test files
 test_files:

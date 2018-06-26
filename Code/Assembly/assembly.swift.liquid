@@ -17,9 +17,10 @@ final class {{ module_info.name }}ModuleAssembly: Assembly {
 	var presenter: {{ module_info.name }}Presenter {
 		return define(scope: .prototype,
                init: {{ module_info.name }}PresenterImp(view: self.view)
+        )
 	}
 
-	func inject(into: viewController: {{ module_info.name }}ViewController) {
+	func inject(into viewController: {{ module_info.name }}ViewController) {
 		defineInjection(key: "view", into: viewController) {
             $0.presenter = self.presenter
             return $0
